@@ -1,0 +1,54 @@
+<%= form_with model: @employee do |f| %> 
+
+	<% if @employee.errors.any? %>
+
+<div>
+<h3>Errors</h3> 
+	
+	<ul> 
+<% @employee.errors.full messages.each do |message| %> 
+<li><%= message %></li>
+<% end %> 
+</u1>
+</div>
+<% end %> 
+
+<div>
+<%= f.label :name %><br>
+<%= f.text_field :name %>
+</div>
+ 
+ <br> 
+ 
+<div>
+<%= f.label :email %><br>
+<%= f.email_field :email %>
+</div>
+
+
+<br> 
+ 
+<div>
+<%= f.label :department %><br>
+<%= f.text_field :department %>
+</div>
+
+<br> 
+
+<div>
+<%= f.label :manager_id, "Manager" %><br>
+<%= f.collection_select(:manager_id, @managers, :id, :name, { include_blank: "NA" } )%>
+</div>
+
+<br> 
+ 
+<div>
+<%= f.label :salary %><br>
+<%= f.number_field :salary %>
+</div>
+
+<br>
+
+<%= f.submit %>
+
+<% end %>

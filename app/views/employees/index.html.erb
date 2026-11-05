@@ -1,0 +1,43 @@
+<h1>Employee Management</h1>
+<%= form_with url: employees_path, method: :get do |f| %> 
+<%= f.text_field :search, value: params[:search], placeholder: "Search Employee" %>
+  <%= f.submit "Search" %>
+<% end %> 
+  
+<br>
+  
+<%= link_to "New Employee", new_employee_path %>
+ 
+<hr>
+
+<table border="1">
+<tr>
+<th>Name</th> 
+<th>Email</th> 
+<th>Department</th>
+<th>Manager</th>
+<th>Salary</th>
+<th>Actions</th>
+</tr>
+
+	<% @employees.each do |employee| %>
+<tr>
+<td><%= employee.name %></td>
+<td><%= employee.email %></td>
+<td><%= employee.department %></td>
+<td><%= employee.manager&.name || "NA" %></td>
+<td><%= employee.salary %></td>
+
+	<td>
+
+ <%= link_to "Show", employee_path(employee) %>
+ <%= link_to "Edit", edit_employee_path(employee) %>
+ <%= link_to "Delete", employee_path(employee), 
+		data: { turbo_method: :delete, 
+				turbo_confirm: "Are you sure?"
+			} %>
+			
+</td>
+</tr>
+<% end %> 
+</table>

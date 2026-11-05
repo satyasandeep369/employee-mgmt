@@ -1,0 +1,28 @@
+<h1>Employee Details</h1> 
+
+<p>
+<strong>Name:</strong>
+<%= @employee.name %>
+</p>
+ 
+<p>
+<strong>Email:</strong> 
+<%= @employee.email %>
+</p>
+
+<p>
+<strong>Department:</strong>
+<%= @employee.department %>
+</p>
+
+<p>
+<strong>Manager:</strong>
+<%= @employee.manager&.name || "NA" %>
+</p>
+ 
+<p>
+<strong>Salary:</strong> 
+<%= @employee.salary %> 
+</p>
+
+<%= link_to "Back", employees_path %>
